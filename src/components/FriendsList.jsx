@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 function Friend({ friend: { name, image, balance } }) {
   let balanceMessage;
@@ -32,7 +32,6 @@ function FriendsList({ friends }) {
   return (
     <ul>
       {friends.map((fr) => {
-        // console.log(fr);
         return <Friend key={fr.id} friend={fr} />;
       })}
     </ul>
