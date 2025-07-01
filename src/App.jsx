@@ -2,12 +2,12 @@ import { useState } from 'react';
 
 import './App.css';
 
-import Friends from './components/Friends';
+import FriendsList from './components/FriendsList';
 
 function App() {
   return (
     <div>
-      <Friends />
+      <FriendsList />
     </div>
   );
 }
