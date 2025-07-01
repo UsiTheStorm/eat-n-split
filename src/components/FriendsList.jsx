@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Button from './common/Button';
+
 function Friend({ friend: { name, image, balance } }) {
   let balanceMessage;
 
@@ -23,7 +25,7 @@ function Friend({ friend: { name, image, balance } }) {
       <img src={image} alt={name} />
       <h3>{name}</h3>
       {balanceMessage}
-      <button className="button">Select</button>
+      <Button>Select</Button>
     </li>
   );
 }
