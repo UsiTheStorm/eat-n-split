@@ -2,10 +2,12 @@ import { useState } from 'react';
 
 import './App.css';
 
+import Friends from './components/Friends';
+
 function App() {
   return (
     <div>
-      <h1>App</h1>
+      <Friends />
     </div>
   );
 }
