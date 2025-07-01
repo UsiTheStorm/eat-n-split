@@ -18,9 +18,7 @@ function App() {
         <FormAddFriend />
         <Button>Add Friend</Button>
       </div>
-      <div>
-        <FormSplitBill />
-      </div>
+      <FormSplitBill />
     </div>
   );
 }
