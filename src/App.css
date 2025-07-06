@@ -194,6 +194,10 @@ form h2 {
     align-items: center;
   }
 
+  .sidebar ul {
+    width: 100%;
+  }
+
   .sidebar > .button {
     float: none;
     margin-right: 0;
