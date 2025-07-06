@@ -5,6 +5,15 @@ import Button from './common/Button';
 function Friend({ friend: { name, image, balance } }) {
   let balanceMessage;
 
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => setImageError(true);
+
+  const displayedImage =
+    imageError || !image
+      ? 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_640.png' // URL вашого плейсхолдера
+      : image;
+
   if (balance < 0) {
     balanceMessage = (
       <p className="red">
@@ -22,7 +31,7 @@ function Friend({ friend: { name, image, balance } }) {
   }
   return (
     <li>
-      <img src={image} alt={name} />
+      <img src={displayedImage} alt={name} onError={handleImageError} />
       <h3>{name}</h3>
       {balanceMessage}
       <Button>Select</Button>
