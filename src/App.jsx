@@ -26,7 +26,7 @@ function App() {
 
   function handleSelection(friend) {
     console.log(friend);
-    setSelectedFriend(friend);
+    setSelectedFriend((selected) => (selected?.id === friend.id ? null : friend));
   }
 
   return (

@@ -7,7 +7,7 @@ function Friend({ friend, onSelection, selectedFriend }) {
 
   let balanceMessage;
 
-  const isSelected = selectedFriend.id === friend.id;
+  const isSelected = selectedFriend?.id === friend.id;
 
   const [imageError, setImageError] = useState(false);
 
