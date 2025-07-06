@@ -35,7 +35,7 @@ function Friend({ friend, onSelection, selectedFriend }) {
     balanceMessage = <p>You and {name} are equal</p>;
   }
   return (
-    <li className={isSelected && 'selected'}>
+    <li className={isSelected ? 'selected' : ''}>
       <img src={displayedImage} alt={name} onError={handleImageError} />
       <h3>{name}</h3>
       {balanceMessage}
