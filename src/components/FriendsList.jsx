@@ -2,7 +2,8 @@ import { useState } from 'react';
 
 import Button from './common/Button';
 
-function Friend({ friend: { name, image, balance } }) {
+function Friend({ friend, onSelection }) {
+  const { name, image, balance } = friend;
   let balanceMessage;
 
   const [imageError, setImageError] = useState(false);
@@ -35,16 +36,16 @@ function Friend({ friend: { name, image, balance } }) {
       <img src={displayedImage} alt={name} onError={handleImageError} />
       <h3>{name}</h3>
       {balanceMessage}
-      <Button>Select</Button>
+      <Button onClick={() => onSelection(friend)}>Select</Button>
     </li>
   );
 }
 
-function FriendsList({ friends }) {
+function FriendsList({ friends, onSelection }) {
   return (
     <ul>
       {friends.map((fr) => {
-        return <Friend key={fr.id} friend={fr} />;
+        return <Friend key={fr.id} friend={fr} onSelection={onSelection} />;
       })}
     </ul>
   );

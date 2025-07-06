@@ -24,13 +24,21 @@ function App() {
     setShowAddFriend(false);
   }
 
+  function handleSelection(friend) {
+    console.log(friend);
+    setSelectedFriend(friend);
+  }
+
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendsList friends={friends} on />
+        <FriendsList friends={friends} onSelection={handleSelection} />
+
         {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
+
         <Button onClick={handleShowAddFriend}>{showAddFriend ? 'Close' : 'Add Friend'}</Button>
       </div>
+
       {selectedFriend && <FormSplitBill />}
     </div>
   );
