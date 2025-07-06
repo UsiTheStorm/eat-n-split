@@ -48,7 +48,7 @@ function FormAddFriend({ onAddFriend }) {
         placeholder="Tiffany"
         id="new-friend-name"
         required
-        maxlength="16"
+        maxLength="16"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
