@@ -5,12 +5,18 @@ import Button from './common/Button';
 function FormSplitBill({ selectedFriend: { name }, onSplitBill }) {
   const [bill, setBill] = useState('');
   const [userExpense, setUserExpense] = useState('');
-  const friendExpense = bill ? bill - userExpense : '';
+  let friendExpense = bill ? bill - userExpense : '';
   // const [friendExpense, setFriendExpense] = useState('');
   const [whoPays, setWhoPays] = useState('user');
 
   function handleUserExpense(e) {
     setUserExpense(Number(e.target.value) > bill ? userExpense : Number(e.target.value));
+  }
+
+  function resetValues() {
+    setBill('');
+    setUserExpense('');
+    friendExpense = '';
   }
 
   function handleSubmit(e) {
@@ -27,7 +33,8 @@ function FormSplitBill({ selectedFriend: { name }, onSplitBill }) {
     }
 
     onSplitBill(whoPays === 'user' ? friendExpense : -userExpense);
-    // console.log(bill, userExpense, friendExpense, whoPays);
+
+    resetValues();
   }
 
   return (
