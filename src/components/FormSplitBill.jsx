@@ -2,14 +2,36 @@ import { useState } from 'react';
 
 import Button from './common/Button';
 
-function FormSplitBill({ selectedFriend: { name } }) {
+function FormSplitBill({ selectedFriend: { name }, onSplitBill }) {
   const [bill, setBill] = useState('');
   const [userExpense, setUserExpense] = useState('');
-  const [friendExpense, setFriendExpense] = useState('');
+  const friendExpense = bill ? bill - userExpense : '';
+  // const [friendExpense, setFriendExpense] = useState('');
   const [whoPays, setWhoPays] = useState('user');
 
+  function handleUserExpense(e) {
+    setUserExpense(Number(e.target.value) > bill ? userExpense : Number(e.target.value));
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (bill <= 0 || isNaN(bill)) {
+      console.error('Please enter valid positive bill value');
+      return;
+    }
+
+    if (userExpense === '' || isNaN(userExpense)) {
+      console.error('Please enter valid your expense value (0 or positive)');
+      return;
+    }
+
+    onSplitBill(whoPays === 'user' ? friendExpense : -userExpense);
+    // console.log(bill, userExpense, friendExpense, whoPays);
+  }
+
   return (
-    <form action="" className="form-split-bill">
+    <form action="" className="form-split-bill" onSubmit={handleSubmit}>
       <h2>Split a bill with {name}</h2>
       <label htmlFor="bill-value">💷 Bill value</label>
       <input
@@ -33,7 +55,7 @@ function FormSplitBill({ selectedFriend: { name } }) {
         min="0"
         max={bill}
         value={userExpense}
-        onChange={(e) => setUserExpense(Number(e.target.value))}
+        onChange={handleUserExpense}
       />
 
       <label htmlFor="friend-expense">🙆 {name} expense</label>
@@ -46,7 +68,7 @@ function FormSplitBill({ selectedFriend: { name } }) {
         min="0"
         max={bill}
         value={friendExpense}
-        onChange={(e) => setFriendExpense(Number(e.target.value))}
+        // onChange={(e) => setFriendExpense(Number(e.target.value))}
       />
 
       <label htmlFor="who-pay">💳 Who is paying the bill</label>
