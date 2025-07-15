@@ -48,7 +48,6 @@ function FormSplitBill({ selectedFriend: { name }, onSplitBill }) {
         type="number"
         id="user-expense"
         required={whoPays === 'user'}
-        disabled={whoPays === 'friend'}
         placeholder="£50"
         min="0"
         max={bill}
@@ -60,8 +59,7 @@ function FormSplitBill({ selectedFriend: { name }, onSplitBill }) {
       <input
         type="number"
         id="friend-expense"
-        required={whoPays === 'friend'}
-        disabled={whoPays === 'user'}
+        disabled
         placeholder="£50"
         min="0"
         max={bill}
