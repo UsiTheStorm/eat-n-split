@@ -25,7 +25,6 @@ function App() {
   }
 
   function handleSelection(friend) {
-    console.log(friend);
     setSelectedFriend((selected) => (selected?.id === friend.id ? null : friend));
     setShowAddFriend(false);
   }
